@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estación 68 — Tienda de Bebidas · La Plata | Pedí por WhatsApp</title>
+<meta name="description" content="Tienda de bebidas en La Plata. Gin, whisky, vinos, cervezas, vodka, combos y más. Armá tu pedido y recibilo a domicilio. Envío gratis desde $25.000.">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Estación 68 — Tienda de Bebidas">
+<meta property="og:description" content="Catálogo online con envío a domicilio en La Plata. Armá tu pedido y pedí por WhatsApp.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Estación 68 — Tienda de Bebidas">
+<meta name="twitter:description" content="Catálogo online con envío a domicilio en La Plata.">
+<meta name="twitter:image" content="og-image.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230a0a0c' stroke='%23d4b25a' stroke-width='3'/><text x='32' y='43' font-family='Arial,sans-serif' font-size='27' font-weight='bold' fill='%23f0d68a' text-anchor='middle'>68</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0c; --bg-2:#111114; --card:#16161a; --card-2:#1c1c21;
+    --line:#2a2a30; --gold:#d4b25a; --gold-2:#f0d68a; --gold-deep:#a8842f;
+    --text:#f4f1ea; --muted:#9a958c; --green:#25d366; --red:#e23b3b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit}
+
+  .topbar{background:linear-gradient(90deg,#0a0a0c,#141016);border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted);padding:7px 20px;display:flex;justify-content:center;align-items:center;gap:14px 22px;flex-wrap:wrap;letter-spacing:.3px}
+  .topbar span{display:inline-flex;align-items:center;gap:6px}
+  .topbar b{color:var(--gold-2);font-weight:600}
+  .status-badge{display:inline-flex;align-items:center;gap:6px;font-weight:600;padding:2px 10px;border-radius:999px;border:1px solid}
+  .status-badge .dot{width:7px;height:7px;border-radius:50%}
+  .st-open{color:#7ee2a8;border-color:#1e5a3a;background:rgba(30,90,58,.18)} .st-open .dot{background:#37d27e;box-shadow:0 0 6px #37d27e}
+  .st-closed{color:#e9a0a0;border-color:#5a2a2a;background:rgba(90,42,42,.18)} .st-closed .dot{background:#e23b3b}
+
+  header.hero{position:relative;background:radial-gradient(1100px 460px at 50% -60px,rgba(212,178,90,.18),transparent 70%),linear-gradient(180deg,#101015,#0a0a0c);border-bottom:1px solid var(--line);padding:42px 20px 34px;text-align:center;overflow:hidden}
+  .logo{width:clamp(150px,34vw,192px);height:auto;margin:0 auto;display:block;filter:drop-shadow(0 18px 40px rgba(0,0,0,.6))}
+  .brand-rule{width:140px;height:2px;margin:20px auto 14px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .hero-tag{font-size:14px;color:var(--muted);max-width:540px;margin:0 auto;line-height:1.55}
+  .hero-cta{margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;transition:.18s}
+  .btn:hover{border-color:var(--gold);color:var(--gold-2);transform:translateY(-1px)}
+  .btn-wsp{background:linear-gradient(135deg,#1eb16a,#13935a);border-color:transparent;color:#04130b}
+  .btn-wsp:hover{filter:brightness(1.08);color:#04130b}
+
+  .promobar{background:linear-gradient(90deg,#1a1407,#241a09,#1a1407);border-bottom:1px solid var(--gold-deep);color:var(--gold-2);font-size:13px;font-weight:600;padding:9px 16px;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;text-align:center}
+  .promobar span{display:inline-flex;align-items:center;gap:7px}
+  .promobar b{color:#fff8e6}
+
+  .navwrap{position:sticky;top:0;z-index:40;background:rgba(10,10,12,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .searchbar{max-width:1180px;margin:0 auto;padding:12px 16px 0}
+  .search-input{width:100%;display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 15px}
+  .search-input input{flex:1;background:transparent;border:0;outline:0;color:var(--text);font-size:15px;font-family:inherit}
+  .search-input input::placeholder{color:var(--muted)}
+  .catnav{max-width:1180px;margin:0 auto;padding:12px 8px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+  .catnav::-webkit-scrollbar{display:none}
+  .chip{flex-shrink:0;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;background:var(--card);border:1px solid var(--line);color:var(--muted);cursor:pointer;white-space:nowrap;transition:.15s}
+  .chip:hover{color:var(--text);border-color:#3a3a42}
+  .chip.active{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#1a1407;border-color:transparent}
+  .chip.fire{border-color:var(--gold-deep);color:var(--gold-2)}
+
+  main{max-width:1180px;margin:0 auto;padding:8px 16px 80px}
+  .section{padding-top:34px;scroll-margin-top:130px}
+  .section-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .section-head h2{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:2px;color:var(--text);line-height:1;display:flex;align-items:center;gap:13px}
+  .section-head h2::before{content:"";width:5px;height:30px;border-radius:3px;background:linear-gradient(180deg,var(--gold-2),var(--gold-deep))}
+  .section-head .count{font-size:12px;color:var(--gold-2);border:1px solid var(--gold-deep);border-radius:999px;padding:3px 10px;font-weight:600}
+  .section-head .hr{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:12px}
+  .item{background:linear-gradient(180deg,var(--card),var(--card-2));border:1px solid var(--line);border-radius:14px;padding:14px 15px;display:flex;flex-direction:column;gap:11px;transition:.16s;position:relative;overflow:hidden}
+  .item.incart{border-color:var(--gold-deep)}
+  .item::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:.16s}
+  .item:hover{border-color:#3a3a42;transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+  .item:hover::after{background:linear-gradient(180deg,var(--gold-2),var(--gold-deep))}
+  .item .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .item .name{font-size:14px;font-weight:600;letter-spacing:.2px;line-height:1.3}
+  .item .price{font-family:'Bebas Neue',sans-serif;font-size:23px;letter-spacing:1px;color:var(--gold-2);white-space:nowrap}
+  .item .was{font-size:12px;color:var(--muted);text-decoration:line-through;margin-right:6px}
+  .badge-off{position:absolute;top:0;right:0;background:linear-gradient(135deg,var(--red),#a31f1f);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.5px;padding:3px 9px;border-bottom-left-radius:10px}
+  .add{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:9px;border-radius:10px;border:1px solid var(--line);background:#202026;color:var(--text);font-size:13px;font-weight:600;cursor:pointer;transition:.14s}
+  .add:hover{border-color:var(--gold);color:var(--gold-2)}
+  .add svg{flex-shrink:0}
+  .stepper{display:flex;align-items:center;justify-content:space-between;width:100%;border:1px solid var(--gold-deep);border-radius:10px;overflow:hidden;background:#1c160b}
+  .stepper button{width:38px;height:36px;border:0;background:transparent;color:var(--gold-2);font-size:20px;cursor:pointer;line-height:1}
+  .stepper button:hover{background:rgba(212,178,90,.12)}
+  .stepper .q{font-weight:700;font-size:15px;color:var(--text)}
+
+  .combo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .combo{background:radial-gradient(400px 120px at 100% 0,rgba(212,178,90,.12),transparent),linear-gradient(180deg,var(--card-2),#121216);border:1px solid var(--gold-deep);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+  .combo.incart{box-shadow:0 0 0 1px var(--gold-2) inset}
+  .combo .tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .combo .cname{font-size:15px;font-weight:700;line-height:1.35;flex:1}
+  .combo .price{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold-2);letter-spacing:1px}
+  .combo .was{font-size:13px;color:var(--muted);text-decoration:line-through;margin-left:8px}
+
+  .empty{display:none;text-align:center;color:var(--muted);padding:60px 0;font-size:15px}
+
+  footer{border-top:1px solid var(--line);background:linear-gradient(180deg,#0a0a0c,#0f0c10);padding:38px 20px 30px}
+  .foot-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:30px;align-items:start}
+  .foot-name{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:3px;color:var(--gold-2);line-height:1}
+  .foot-h{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:12px}
+  .foot-li{color:var(--muted);font-size:13.5px;display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .foot-li b{color:var(--text);font-weight:600}
+  .foot-li.today{color:var(--gold-2)}
+  .pays{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+  .pay{font-size:12px;color:var(--text);background:#1c1c21;border:1px solid var(--line);border-radius:8px;padding:5px 10px}
+  .mapwrap{margin-top:12px;border:1px solid var(--line);border-radius:12px;overflow:hidden;height:150px}
+  .mapwrap iframe{width:100%;height:100%;border:0;filter:grayscale(.3) invert(.9) hue-rotate(180deg) contrast(.9)}
+  .foot-note{max-width:1080px;margin:26px auto 0;text-align:center;font-size:11.5px;color:#5c5850;letter-spacing:.3px;border-top:1px solid var(--line);padding-top:18px}
+
+  .fab{position:fixed;right:20px;bottom:20px;z-index:55;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold-2),var(--gold-deep));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.5);cursor:pointer;transition:.18s;border:0}
+  .fab:hover{transform:scale(1.07)}
+  .fab svg{width:26px;height:26px}
+  .fab .badge{position:absolute;top:-4px;right:-4px;min-width:23px;height:23px;padding:0 6px;border-radius:999px;background:var(--red);color:#fff;font-size:12px;font-weight:700;display:none;align-items:center;justify-content:center;border:2px solid var(--bg)}
+  .fab .badge.show{display:flex}
+
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:60;opacity:0;pointer-events:none;transition:.25s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:410px;max-width:94vw;background:linear-gradient(180deg,#121216,#0c0c0f);border-left:1px solid var(--line);z-index:61;transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}
+  .drawer-head h3{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1.5px;color:var(--gold-2);display:flex;align-items:center;gap:10px}
+  .drawer-close{background:transparent;border:0;color:var(--muted);font-size:26px;cursor:pointer;line-height:1}
+  .drawer-close:hover{color:var(--text)}
+  .pane{flex:1;overflow-y:auto;padding:8px 16px}
+  .cart-empty{text-align:center;color:var(--muted);padding:70px 20px;font-size:14px}
+  .crow{display:flex;gap:12px;align-items:center;padding:13px 4px;border-bottom:1px solid var(--line)}
+  .crow .ci{flex:1;min-width:0}
+  .crow .cn{font-size:13.5px;font-weight:600;line-height:1.3}
+  .crow .cp{font-size:12px;color:var(--muted);margin-top:2px}
+  .crow .ct{font-family:'Bebas Neue',sans-serif;font-size:19px;color:var(--gold-2);letter-spacing:.5px;white-space:nowrap}
+  .mini{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .mini button{width:30px;height:30px;border:0;background:#1c1c21;color:var(--gold-2);font-size:17px;cursor:pointer}
+  .mini button:hover{background:#26262d}
+  .mini .q{width:30px;text-align:center;font-weight:700;font-size:14px}
+  .drawer-foot{border-top:1px solid var(--line);padding:14px 18px;background:#0c0c0f}
+  .sumrow{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:5px}
+  .sumrow.tot{margin-top:8px;align-items:baseline}
+  .sumrow.tot .l{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .sumrow.tot .v{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--gold-2);letter-spacing:1px}
+  .sumrow .free{color:#7ee2a8;font-weight:700}
+  .minwarn{display:none;background:rgba(226,59,59,.1);border:1px solid #5a2a2a;color:#e9a0a0;font-size:12px;padding:8px 11px;border-radius:9px;margin:8px 0}
+  .btn-primary{width:100%;padding:14px;border-radius:12px;border:0;background:linear-gradient(135deg,var(--gold-2),var(--gold-deep));color:#1a1407;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:.15s;margin-top:10px}
+  .btn-primary:hover{filter:brightness(1.06)}
+  .btn-primary:disabled{opacity:.45;cursor:not-allowed;filter:none}
+  .checkout{width:100%;padding:14px;border-radius:12px;border:0;background:linear-gradient(135deg,#25d366,#128c4b);color:#04130b;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:.15s;margin-top:10px}
+  .checkout:hover{filter:brightness(1.07)}
+  .checkout:disabled{opacity:.45;cursor:not-allowed;filter:none}
+  .linkrow{display:flex;gap:8px;margin-top:9px}
+  .ghost{flex:1;padding:9px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--muted);font-size:12.5px;cursor:pointer}
+  .ghost:hover{color:var(--text);border-color:#3a3a42}
+  .ghost.danger:hover{color:#e57373;border-color:#5a2a2a}
+
+  /* checkout form */
+  .field{margin-bottom:13px}
+  .field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:600;letter-spacing:.3px}
+  .field input,.field select,.field textarea{width:100%;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 13px;color:var(--text);font-size:14px;font-family:inherit;outline:0}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+  .seg{display:flex;gap:8px}
+  .seg label{flex:1;cursor:pointer}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg .opt{display:block;text-align:center;padding:11px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;font-weight:600;color:var(--muted);transition:.14s}
+  .seg input:checked + .opt{border-color:var(--gold);background:rgba(212,178,90,.12);color:var(--gold-2)}
+  .back-link{background:transparent;border:0;color:var(--muted);font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:6px}
+  .back-link:hover{color:var(--gold-2)}
+
+  /* AGE GATE */
+  .agegate{position:fixed;inset:0;z-index:90;background:radial-gradient(900px 500px at 50% 20%,#15110a,#070708 70%);display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
+  .agegate.hide{display:none}
+  .age-card{max-width:380px}
+  .age-card .lg{width:120px;margin:0 auto 22px;display:block}
+  .age-card h2{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:1.5px;color:var(--text);margin-bottom:8px}
+  .age-card p{color:var(--muted);font-size:14px;margin-bottom:22px}
+  .age-btns{display:flex;gap:12px;justify-content:center}
+  .age-yes{padding:13px 30px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--gold-2),var(--gold-deep));color:#1a1407;font-weight:700;font-size:15px;cursor:pointer}
+  .age-no{padding:13px 26px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--muted);font-weight:600;font-size:15px;cursor:pointer}
+  .age-deny{color:var(--muted);font-size:14px;margin-top:18px;display:none}
+  .age-legal{font-size:11px;color:#5c5850;margin-top:20px}
+
+  .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:#1c1c21;border:1px solid var(--gold-deep);color:var(--text);padding:11px 20px;border-radius:999px;font-size:13.5px;font-weight:600;z-index:95;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:24px}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr 1fr}.item .name{font-size:13px}.section-head h2{font-size:28px}}
+  @media(max-width:420px){.grid{grid-template-columns:1fr}}
+
+  /* ---- VIDA / ANIMACIONES ---- */
+  .art{position:relative;height:140px;border-radius:12px;margin:-1px -1px 6px;overflow:hidden;background:radial-gradient(140px 120px at 50% 12%,rgba(212,178,90,.22),transparent 70%),linear-gradient(180deg,#16161b,#0d0d10);display:flex;align-items:flex-end;justify-content:center}
+  .art svg{height:122px;width:auto;filter:drop-shadow(0 12px 16px rgba(0,0,0,.55));transition:transform .3s ease}
+  .combo:hover .art svg,.item:hover .art svg{transform:translateY(-4px) scale(1.04)}
+  .art .shine{position:absolute;top:0;left:-70%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.14),transparent);transform:skewX(-18deg);animation:shine 3.8s ease-in-out infinite;pointer-events:none}
+  @keyframes shine{0%,55%{left:-70%}100%{left:130%}}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  .logo{animation:floaty 5.5s ease-in-out infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(55,210,126,.55)}70%{box-shadow:0 0 0 8px rgba(55,210,126,0)}100%{box-shadow:0 0 0 0 rgba(55,210,126,0)}}
+  .st-open .dot{animation:pulse 2.2s infinite}
+  @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.4)}100%{transform:scale(1)}}
+  .fab .badge.bump{animation:pop .38s ease}
+  .add:active{transform:scale(.97)}
+  .promobar{background-size:200% 100%;animation:sheen 6s linear infinite}
+  @keyframes sheen{0%{background-position:0% 0}100%{background-position:200% 0}}
+  @media (prefers-reduced-motion: reduce){.logo,.st-open .dot,.art .shine,.promobar{animation:none}.reveal{opacity:1;transform:none}}
+
+
+  html{scroll-padding-top:118px}
+  .cartbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:54;display:none;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-radius:14px;border:0;background:linear-gradient(135deg,#1eb16a,#13935a);color:#04130b;font-weight:700;font-size:14px;box-shadow:0 14px 34px rgba(0,0,0,.55);cursor:pointer}
+  .cartbar .cb-l{display:flex;align-items:center;gap:9px}
+  .cartbar .cb-t{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:.5px}
+  @media(max-width:600px){.cartbar.show{display:flex}.fab{display:none}}
+
+  .art .pimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:6px 2px 2px;z-index:2}
+  .art .shine{z-index:3}
+</style>
+</head>
+<body>
+
+  <!-- AGE GATE -->
+  <div class="agegate" id="ageGate">
+    <div class="age-card">
+      <div class="lg" id="ageLogo"></div>
+      <h2>¿Sos mayor de 18 años?</h2>
+      <p>Para ingresar a la tienda necesitás ser mayor de edad. La venta de bebidas alcohólicas está prohibida para menores de 18 años.</p>
+      <div class="age-btns">
+        <button class="age-yes" onclick="ageYes()">Sí, soy mayor</button>
+        <button class="age-no" onclick="ageNo()">No</button>
+      </div>
+      <div class="age-deny" id="ageDeny">Lo sentimos, este sitio es solo para mayores de 18 años.</div>
+      <div class="age-legal">Estación 68 · Tienda de Bebidas</div>
+    </div>
+  </div>
+
+  <div class="topbar">
+    <span class="status-badge" id="statusBadge"><span class="dot"></span><span id="statusText">—</span></span>
+    <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f0d68a" stroke-width="2"><path d="M12 21s-6-5.7-6-10a6 6 0 0 1 12 0c0 4.3-6 10-6 10Z"/><circle cx="12" cy="11" r="2"/></svg> <b>68 e/ 17 y 18</b> · La Plata</span>
+    <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f0d68a" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L20 13l1 4v2a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg> <b>221 661-7353</b></span>
+    <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f0d68a" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#f0d68a" stroke="none"/></svg> <b>@estacion68_</b></span>
+  </div>
+
+  <header class="hero">
+    <div class="logo" id="heroLogo"></div>
+    <div class="brand-rule"></div>
+    <p class="hero-tag">Armá tu pedido, agregá al carrito y lo enviás directo por WhatsApp. ¡Te lo llevamos a casa!</p>
+    <div class="hero-cta">
+      <button class="btn btn-wsp" onclick="openCart()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#04130b" stroke-width="2"><circle cx="9" cy="20" r="1.5" fill="#04130b"/><circle cx="18" cy="20" r="1.5" fill="#04130b"/><path d="M2 3h3l2.4 12.4a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.2L22 6H6"/></svg>
+        Ver mi pedido
+      </button>
+      <a class="btn" href="#ofertas">Ver ofertas</a>
+    </div>
+  </header>
+
+  <div class="promobar">
+    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f0d68a" stroke-width="2"><path d="M3 13h11V6H3zM14 9h4l3 3v4h-2"/><circle cx="6.5" cy="17" r="1.6"/><circle cx="17.5" cy="17" r="1.6"/></svg> <b>Envío GRATIS</b> desde <b id="promoFree">$25.000</b></span>
+    <span>Pedido mínimo para envío: <b id="promoMin">$8.000</b></span>
+    <span>🛵 Llega en el día</span>
+  </div>
+
+  <div class="navwrap">
+    <div class="searchbar">
+      <div class="search-input">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a958c" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="search" type="text" placeholder="Buscar producto… (ej: fernet, gin, malbec)">
+      </div>
+    </div>
+    <nav class="catnav" id="catnav"></nav>
+  </div>
+
+  <main id="main"></main>
+  <div class="empty" id="empty">No encontramos productos con ese nombre.</div>
+
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <div class="foot-name">ESTACIÓN 68</div>
+        <div class="foot-li" style="margin-top:12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f0d68a" stroke-width="2"><path d="M12 21s-6-5.7-6-10a6 6 0 0 1 12 0c0 4.3-6 10-6 10Z"/><circle cx="12" cy="11" r="2"/></svg> <b>68 e/ 17 y 18</b>, La Plata</div>
+        <div class="foot-li"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f0d68a" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L20 13l1 4v2a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg> <b>221 661-7353</b></div>
+        <div class="foot-li"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f0d68a" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#f0d68a" stroke="none"/></svg> <b>@estacion68_</b></div>
+        <div class="mapwrap"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=calle%2068%20e%2F%2017%20y%2018%20La%20Plata&z=15&output=embed"></iframe></div>
+      </div>
+      <div>
+        <div class="foot-h">Horarios</div>
+        <div id="hoursList"></div>
+      </div>
+      <div>
+        <div class="foot-h">Medios de pago</div>
+        <div class="pays" id="paysList"></div>
+        <div class="foot-h" style="margin-top:20px">Envíos</div>
+        <div class="foot-li">Envío a domicilio en el día</div>
+        <div class="foot-li">Retiro en local sin cargo</div>
+      </div>
+    </div>
+    <p class="foot-note">Precios sujetos a modificación sin previo aviso. Venta de bebidas alcohólicas prohibida a menores de 18 años (Ley 24.788). · Catálogo digital — mockup de demostración.</p>
+  </footer>
+
+  <button class="cartbar" id="cartBar" onclick="openCart()" aria-label="Ver pedido">
+    <span class="cb-l"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#04130b" stroke-width="2"><circle cx="9" cy="20" r="1.6" fill="#04130b"/><circle cx="18" cy="20" r="1.6" fill="#04130b"/><path d="M2 3h3l2.4 12.4a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.2L22 6H6"/></svg> <span id="cbCount">Ver mi pedido</span></span>
+    <span class="cb-t" id="cbTotal">$0</span>
+  </button>
+  <button class="fab" onclick="openCart()" aria-label="Ver carrito">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1a1407" stroke-width="2"><circle cx="9" cy="20" r="1.6" fill="#1a1407"/><circle cx="18" cy="20" r="1.6" fill="#1a1407"/><path d="M2 3h3l2.4 12.4a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.2L22 6H6"/></svg>
+    <span class="badge" id="fabBadge">0</span>
+  </button>
+
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+  <aside class="drawer" id="drawer" aria-label="Carrito">
+    <div class="drawer-head">
+      <h3 id="drawerTitle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0d68a" stroke-width="2"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2 3h3l2.4 12.4a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.2L22 6H6"/></svg> Mi pedido</h3>
+      <button class="drawer-close" onclick="closeCart()" aria-label="Cerrar">&times;</button>
+    </div>
+
+    <!-- CART VIEW -->
+    <div class="pane" id="cartPane"></div>
+    <div class="drawer-foot" id="cartFoot">
+      <div class="sumrow tot"><span class="l">Total</span><span class="v" id="cartTotal">$0</span></div>
+      <button class="btn-primary" id="goCheckout" onclick="showCheckout()" disabled>Continuar pedido</button>
+      <div class="linkrow">
+        <button class="ghost" id="shareBtn" onclick="shareCart()" style="display:none">Compartir pedido</button>
+        <button class="ghost danger" id="clearBtn" onclick="clearCart()" style="display:none">Vaciar</button>
+      </div>
+    </div>
+
+    <!-- CHECKOUT VIEW -->
+    <div class="pane" id="checkoutPane" style="display:none">
+      <button class="back-link" onclick="showCart()">&larr; Volver al carrito</button>
+      <div class="field">
+        <label>Nombre y apellido</label>
+        <input id="ckName" type="text" placeholder="Tu nombre" oninput="updateCheckout()">
+      </div>
+      <div class="field">
+        <label>¿Cómo lo querés?</label>
+        <div class="seg">
+          <label><input type="radio" name=" entrega" value="envio" checked onchange="updateCheckout()"><span class="opt">Envío a domicilio</span></label>
+          <label><input type="radio" name=" entrega" value="retiro" onchange="updateCheckout()"><span class="opt">Retiro en local</span></label>
+        </div>
+      </div>
+      <div id="envioFields">
+        <div class="field">
+          <label>Zona de envío</label>
+          <select id="ckZona" onchange="updateCheckout()"></select>
+        </div>
+        <div class="field">
+          <label>Dirección</label>
+          <input id="ckDir" type="text" placeholder="Calle, número, entre calles" oninput="updateCheckout()">
+        </div>
+      </div>
+      <div class="field">
+        <label>Medio de pago</label>
+        <select id="ckPago"></select>
+      </div>
+      <div class="field">
+        <label>Aclaraciones (opcional)</label>
+        <textarea id="ckNote" rows="2" placeholder="Ej: tocar timbre, departamento B…"></textarea>
+      </div>
+    </div>
+    <div class="drawer-foot" id="checkoutFoot" style="display:none">
+      <div class="sumrow"><span>Subtotal</span><span id="ckSub">$0</span></div>
+      <div class="sumrow"><span>Envío</span><span id="ckEnvio">$0</span></div>
+      <div class="sumrow tot"><span class="l">Total</span><span class="v" id="ckTotal">$0</span></div>
+      <div class="minwarn" id="ckMinWarn"></div>
+      <button class="checkout" id="ckSend" onclick="sendOrder()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#04130b"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.2.6 1 1.3 1.6.9.8 1.6 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.8.9c.2.1.4.2.5.3 0 .1 0 .6-.2 1.1Z"/></svg>
+        Enviar pedido por WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+const SHOP = {
+  wsp: "542216617353",
+  minEnvio: 8000,
+  envioGratis: 25000,
+  zonas: [
+    {n:"Casco urbano (calles 1 a 31)", c:1500},
+    {n:"Villa Elvira / Tolosa / Ringuelet", c:2000},
+    {n:"Los Hornos / San Carlos / Altos de San Lorenzo", c:2500},
+    {n:"Otra zona (a confirmar por WhatsApp)", c:0}
+  ],
+  pagos: ["Efectivo","Transferencia","Mercado Pago / QR","Tarjeta débito/crédito"],
+  // hor[dia] = [apertura, cierre] en horas (24h). cierre > 24 = cierra pasada la medianoche. null = cerrado. dia: 0=Dom..6=Sab
+  hor: [ [11,24], [10,24], [10,24], [10,24], [10,24], [10,26], [10,26] ],
+  diaNom: ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"]
+};
+
+const LOGO_SVG = `<svg viewBox="0 0 300 300" role="img" aria-label="Estación 68 — Tienda de Bebidas" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="disk" cx="50%" cy="42%" r="62%"><stop offset="0%" stop-color="#1a1a1c"/><stop offset="100%" stop-color="#070707"/></radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fcfcfc"/><stop offset="50%" stop-color="#b9bbbe"/><stop offset="100%" stop-color="#5d5f63"/></linearGradient>
+    <linearGradient id="rib" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3c3e42"/><stop offset="100%" stop-color="#17181a"/></linearGradient>
+  </defs>
+  <circle cx="150" cy="150" r="146" fill="url(#ring)"/>
+  <circle cx="150" cy="150" r="138" fill="#0a0a0a"/>
+  <circle cx="150" cy="150" r="132" fill="url(#disk)" stroke="#2b2c2e" stroke-width="1"/>
+  <text x="150" y="118" text-anchor="middle" fill="#f4f1ea" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="46" letter-spacing="1">ESTACIÓN</text>
+  <line x1="86" y1="170" x2="120" y2="170" stroke="#cfd1d4" stroke-width="2.5"/>
+  <line x1="180" y1="170" x2="214" y2="170" stroke="#cfd1d4" stroke-width="2.5"/>
+  <text x="150" y="186" text-anchor="middle" fill="#f4f1ea" font-family="'Playfair Display',Georgia,serif" font-weight="900" font-size="58" letter-spacing="2">68</text>
+  <g fill="#e9e9ea"><path d="M139 196h22a3 3 0 0 1 3 3v15a4 4 0 0 1-4 4h-20a4 4 0 0 1-4-4v-15a3 3 0 0 1 3-3z"/><rect x="143" y="200" width="5" height="6" rx="1" fill="#0a0a0a"/><rect x="152" y="200" width="5" height="6" rx="1" fill="#0a0a0a"/><rect x="142" y="210" width="16" height="4" rx="1" fill="#0a0a0a"/><circle cx="145" cy="221" r="2"/><circle cx="155" cy="221" r="2"/></g>
+  <path d="M150 224 L120 250" stroke="#cfd1d4" stroke-width="2" fill="none"/>
+  <path d="M150 224 L180 250" stroke="#cfd1d4" stroke-width="2" fill="none"/>
+  <line x1="138" y1="234" x2="162" y2="234" stroke="#9a9b9d" stroke-width="1.6"/>
+  <line x1="132" y1="242" x2="168" y2="242" stroke="#9a9b9d" stroke-width="1.6"/>
+  <path d="M40 244 L260 244 L248 270 L52 270 Z" fill="url(#rib)" stroke="#cfd1d4" stroke-width="2"/>
+  <path d="M30 250 L40 244 L46 258 L34 262 Z" fill="#202124" stroke="#cfd1d4" stroke-width="1.5"/>
+  <path d="M270 250 L260 244 L254 258 L266 262 Z" fill="#202124" stroke="#cfd1d4" stroke-width="1.5"/>
+  <text x="150" y="262" text-anchor="middle" fill="#f4f1ea" font-family="Inter,sans-serif" font-weight="800" font-size="16" letter-spacing="2.5">TIENDA DE BEBIDAS</text>
+</svg>`;
+
+const CATALOG = {
+  "Ofertas": {fire:true, items:[
+    {n:"Fernet Branca 1L", p:18900, was:21000, img:"fernet-branca-1l"},
+    {n:"Gin Heredero Pomelo Rosa", p:11900, was:14500, img:"gin-heredero-pomelo-rosa"},
+    {n:"Smirnoff Clásico", p:6990, was:8500, img:"smirnoff-clasico"},
+    {n:"Jack Daniel's Clásico 700ml", p:38900, was:42500, img:"jack-daniels-700"},
+    {n:"Aperol", p:8500, was:9800, img:"aperol"},
+    {n:"Combo Previa: Fernet 750ml + 2 Coca 1,5L", p:18500, was:20500, combo:true, img:"combo-previa"},
+  ]},
+  "Combos": {combo:true, items:[
+    {n:"Smirnoff + 2 Speed", p:10900},{n:"Heredero Pink + Tónica 2,25L", p:16900},
+    {n:"Absolut Saborizado + 2 Speed 473ml", p:26000},{n:"Absolut Saborizado + 2 Monster (a elección)", p:26000},
+    {n:"Fernet Branca 750ml + 2 Coca Cola 1,5L", p:20500},{n:"Fernet Branca 1L + 2 Coca Cola 2,25L", p:28000},
+  ]},
+  "Aperitivos / Licores": {items:[
+    {n:"Amarula Cream", p:35900},{n:"Aperol", p:9800},{n:"Baileys", p:26100},{n:"Campari", p:9800},
+    {n:"Cusenier Café al Conac", p:6900},{n:"Cusenier Chocolate", p:6900},{n:"Cusenier Dulce de Leche", p:6900},
+    {n:"Cynar", p:8900},{n:"Fernet Branca 1L", p:21000},{n:"Fernet Branca 750ml", p:16400},{n:"Gancia", p:6990},
+    {n:"Hodlmoser", p:24000},{n:"Jägermeister 700ml", p:28800},{n:"Piña Colada", p:7600},
+    {n:"Rapanui Licor Chocolate", p:15500},{n:"Rapanui Licor Dulce de Leche", p:15500},{n:"Tía María Clásico", p:8900},{n:"Tía María Creamy", p:12100},
+  ]},
+  "Cervezas": {items:[
+    {n:"Amstel Lager Lata 473ml", p:1900},{n:"Andes Rubia Lata 473ml", p:1900},{n:"Brahma Lata 473ml", p:1900},
+    {n:"Brahma Latón 710ml", p:3500},{n:"Corona 710ml", p:4900},{n:"Corona Porrón 330ml", p:2700},
+    {n:"Corona Porrón Pack", p:15600},{n:"Estrella Galicia 0% Alcohol", p:3100},{n:"Estrella Galicia Lager", p:5500},
+    {n:"Grolsch Premium Lata 473ml", p:2500},{n:"Imperial Golden Lata 473ml", p:2200},{n:"Imperial IPA Lata 473ml", p:2500},
+    {n:"Imperial Lager Rubia Lata 473ml", p:1900},{n:"Imperial Roja Lata 473ml", p:2400},{n:"Imperial Stout Lata 473ml", p:2400},
+    {n:"Schneider Lata 473ml", p:1700},{n:"Schneider Latón 710ml", p:3300},{n:"Skol Lata", p:2200},{n:"Warsteiner Lata 473ml", p:2100},
+  ]},
+  "Chocolates": {items:[
+    {n:"Ferrero Rocher x3", p:4400},{n:"Ferrero Rocher x8", p:11000},{n:"Rapanui Barra Marroc", p:5200},
+    {n:"Rapanui Corazones Rellenos DDL", p:5500},{n:"Rapanui Dubai", p:9800},{n:"Rapanui Estrella Mundial 78 DDL", p:7300},
+    {n:"Rapanui Estrella Mundial 86 Marroc", p:7300},{n:"Rapanui Estrella Mundial 22 Pistacho", p:7300},
+    {n:"Rapanui Habanos Rellenos Whisky", p:20500},{n:"Rapanui Milhojas Chocolate Blanco", p:5200},
+    {n:"Rapanui Ositos x4", p:5000},{n:"Rapanui Rama Blanca", p:6000},{n:"Rapanui Rama Leche", p:6000},
+    {n:"Rapanui Tableta Frambuesa", p:5500},{n:"Rapanui Tableta Pistacho", p:9000},{n:"Toblerone", p:13000},
+  ]},
+  "Energizantes": {items:[
+    {n:"Monster Amarillo", p:3000},{n:"Monster Blanco", p:3000},{n:"Monster Clásico", p:3000},
+    {n:"Monster Mango", p:3000},{n:"Monster Rosa", p:3000},{n:"Red Bull 250ml", p:2500},
+    {n:"Speed 250ml", p:1890},{n:"Speed XL 473ml", p:2500},
+  ]},
+  "Gin": {items:[
+    {n:"Aconcagua Azul", p:15900},{n:"Aconcagua Naranja / Rosa / Verde", p:16500},{n:"Aura Pink", p:19000},
+    {n:"Beefeater Clásico 700ml", p:19900},{n:"Bombay Bramble 700ml", p:33490},{n:"Bombay London Dry 750ml", p:31600},
+    {n:"Bosque Alta Montaña", p:24700},{n:"Bosque Nativo", p:16500},{n:"Bulldog London Dry", p:29800},
+    {n:"Gordon's London Dry", p:12590},{n:"Gordon's Pink", p:14700},{n:"Heredero Añejo Estuche", p:33000},
+    {n:"Heredero Boysenberry", p:14500},{n:"Heredero Lemon & Ginger", p:14500},{n:"Heredero Pomelo Rosa", p:14500},
+    {n:"Heredero Tangerine", p:14500},{n:"Inmigrante", p:12400},{n:"Malaria Black", p:34400},
+    {n:"Malaria London Dry", p:26800},{n:"Malaria Original", p:29800},{n:"Merle Clásico", p:9400},
+    {n:"Merle Ed. Limitada", p:9400},{n:"Merle Orange", p:11800},{n:"Merle Pink", p:11800},
+    {n:"Oid Mortales del Litoral", p:16800},{n:"Oid Mortales Federal", p:17700},{n:"Sur Clásico", p:17300},
+    {n:"Sur Frutos Silvestres", p:20500},{n:"Sur Naranja", p:17300},{n:"Tanqueray London Dry 750ml", p:27000},
+    {n:"Tanqueray Sevilla 750ml", p:33000},{n:"Vrienden Dry / London Dry / Rosé", p:12500},
+  ]},
+  "Espumantes": {items:[
+    {n:"Andeluna Extra Brut", p:9000},{n:"Bianchi Extra Brut", p:7900},{n:"Casa Boher Extra Brut", p:23900},
+    {n:"Chandon Délice", p:17300},{n:"Chandon Extra Brut", p:16900},{n:"Chandon Rosé Mini", p:5600},
+    {n:"Cruzat Cuvée Extra Brut", p:14100},{n:"Cruzat Premier Extra Brut", p:13800},{n:"Cuatro Fincas Espumante Blanco", p:15300},
+    {n:"Mumm Extra Brut", p:8800},{n:"Rosell Boher Brut", p:32900},{n:"Santa Julia Espumante", p:12600},{n:"Trumpeter Extra Brut", p:10900},
+  ]},
+  "Gaseosas / Jugos": {items:[
+    {n:"Agua Benedictino 1,5L", p:1900},{n:"Aquarius Manzana 1,5L", p:2300},{n:"Aquarius Naranja 1,5L", p:2300},
+    {n:"Aquarius Pera 1,5L", p:2300},{n:"Aquarius Pomelo 1,5L", p:2300},{n:"Aquarius Uva 1,5L", p:2300},
+    {n:"Baggio Naranja 1L", p:1800},{n:"Cepita Naranja 1L", p:3200},{n:"Coca Cola 500", p:2300},
+    {n:"Coca Cola 1,5L", p:3100},{n:"Coca Cola 2,25L", p:4500},{n:"Coca Cola Lata", p:2000},
+    {n:"Coca Cola Zero 500", p:2300},{n:"Coca Cola Zero 1,5L", p:3100},{n:"Fanta 1,5L", p:3100},
+    {n:"Schweppes Pomelo 1,5L", p:3100},{n:"Schweppes Pomelo 2,25L", p:4500},{n:"Schweppes Tónica 1,5L", p:3100},
+    {n:"Schweppes Tónica 2,25L", p:4500},{n:"Sprite 500", p:2300},{n:"Sprite 1,5L", p:3100},
+    {n:"Sprite 2,25L", p:4500},{n:"Sprite Lata", p:2000},
+  ]},
+  "Ron / Tequila": {items:[
+    {n:"Bacardi Carta Blanca", p:15900},{n:"Bacardi Carta Oro 700ml", p:15900},{n:"Bacardi Carta Oro 1L", p:19400},
+    {n:"Comandante Blanco", p:4200},{n:"Havana Original Añejo 3 Años", p:13500},{n:"Malibu", p:13200},
+    {n:"Conquistador (Tequila)", p:12500},{n:"José Cuervo Oro 750ml", p:45500},
+  ]},
+  "Vermouth": {items:[
+    {n:"Amargo Obrero", p:5790},{n:"Cinzano Rosso 1L", p:8200},{n:"Federal", p:13900},
+    {n:"Feriado Rojo", p:11390},{n:"Feriado Rosado", p:11390},{n:"Interferencia Rojo", p:12800},
+    {n:"Interferencia Rosa", p:12800},{n:"Martini Bianco", p:7650},{n:"Martini Extra Dry", p:7900},{n:"Martini Rosso", p:10990},
+  ]},
+  "Vinos Especiales": {items:[
+    {n:"Barricado Merlot", p:20000},{n:"Barricado Petit Verdot", p:22000},{n:"Barricado Pinot Noir", p:22700},
+    {n:"Barricado Syrah", p:20800},{n:"Bianchi Particular Malbec", p:24700},{n:"Chateau Cabernet Franc", p:13800},
+    {n:"Chateau Malbec", p:13800},{n:"Colomé Torrontés", p:20900},{n:"El Enemigo Cabernet Franc", p:19100},
+    {n:"El Enemigo Malbec", p:19100},{n:"Esencial Ancellotta", p:15200},{n:"Esencial Cabernet Franc", p:15200},
+    {n:"Esencial Criolla", p:15200},{n:"Las Nencias Blend Reserva", p:11500},{n:"Las Nencias Cabernet Franc Reserva", p:11500},
+    {n:"Las Nencias Malbec Reserva", p:11500},{n:"Nativo Blend Cabernet", p:18000},{n:"Pulenta Chardonnay", p:17200},
+    {n:"Pulenta Rosé", p:17900},{n:"Pulenta Sauvignon Blanc", p:17200},{n:"Rutini Cabernet Malbec", p:14800},
+    {n:"Rutini Colección Malbec", p:26900},{n:"Rutini Colección Sauvignon Blanc", p:15790},{n:"Rutini Merlot", p:14890},
+    {n:"Rutini Pinot Noir", p:33100},{n:"VC Aniversario 2015", p:29000},{n:"VC Antiguo 2004", p:37000},{n:"VC Gran Reserva 2000", p:47000},
+  ]},
+  "Vinos": {items:[
+    {n:"Alambrado Cabernet Sauvignon", p:7390},{n:"Alaris Dulce Cosecha", p:3590},{n:"Alcahuete Malbec", p:3700},
+    {n:"Alma Mora Malbec", p:4790},{n:"Alto Sur Malbec", p:6500},{n:"Alto Sur Rosé Malbec", p:6700},
+    {n:"Alto Sur Torrontés", p:6700},{n:"Casa Araujo Malbec", p:8000},{n:"Casual Malbec", p:7500},
+    {n:"Casual Malbec Reserva", p:9000},{n:"Cordero con Piel de Lobo Malbec", p:3790},{n:"Cosecha Tardía Blanco", p:4300},
+    {n:"Cuatro Fincas Malbec-Syrah", p:8500},{n:"Dada Malbec", p:4690},{n:"Don David Malbec", p:7800},
+    {n:"DV Catena Cabernet Malbec Terroir Series", p:12800},{n:"DV Catena Chardonnay", p:14500},{n:"DV Catena Pinot Noir", p:14800},
+    {n:"Elementos Dulce Natural Torrontés", p:4990},{n:"Elementos Torrontés", p:4990},{n:"Errante", p:6000},
+    {n:"Estancia Mendoza", p:3600},{n:"Familia Gascón Red Blend", p:5190},{n:"Flichman Estate Cabernet Sauvignon", p:5500},
+    {n:"Flichman Estate Malbec", p:5500},{n:"Flichman Reserva Cabernet Franc", p:6900},{n:"Flichman Reserva Cabernet Sauvignon", p:6700},
+    {n:"Flichman Reserva Chardonnay", p:6800},{n:"Flichman Reserva Malbec", p:6500},{n:"Hormiga Negra Sweet", p:3200},
+    {n:"Just Malbec", p:7200},{n:"Just Rosé", p:7500},{n:"Just White", p:7500},{n:"La Posta Bonarda", p:12400},
+    {n:"La Posta Rosé", p:10800},{n:"Las Nencias Blend de Blancs", p:10200},{n:"Las Nencias Varietal", p:8300},
+    {n:"Las Perdices Cabernet Sauvignon", p:8900},{n:"Las Perdices Malbec", p:8900},{n:"Las Perdices Torrontés Dulce", p:8900},
+    {n:"Los Gigantes Blanco Dulce", p:2900},{n:"Los Gigantes Cabernet Sauvignon", p:2600},{n:"Los Gigantes Malbec", p:2600},
+    {n:"Los Haroldos Sauvignon Blanc", p:8700},{n:"Luigi Bosca De Sangre Red Blend", p:15490},{n:"Luigi Bosca Malbec", p:13100},
+    {n:"Misterio Cabernet Sauvignon", p:4800},{n:"Misterio Malbec", p:4800},{n:"Misterio Red Blend", p:4800},
+    {n:"Nicasia Malbec", p:6500},{n:"Nicasia Viognier", p:7000},{n:"Novecento Malbec", p:2900},
+    {n:"Otro Loco Más Malbec", p:3700},{n:"Oveja Black Cabernet Sauvignon", p:3390},{n:"Oveja Black Chenin Dulce", p:3890},
+    {n:"Oveja Black Malbec", p:3390},{n:"Oveja Black Red Blend", p:3390},{n:"Oveja Black Spritz", p:4390},
+    {n:"Perro Callejero Blend Malbec", p:6300},{n:"Postales Cabernet Malbec", p:3490},{n:"Postales Malbec", p:3490},
+    {n:"Privado Reserva Cabernet Sauvignon", p:8000},{n:"Privado Reserva Malbec", p:8000},{n:"Privado Reserva Tempranillo", p:8000},
+    {n:"Prófugo Chenin Dulce", p:4000},{n:"Prófugo Especias", p:3900},{n:"Prófugo Frutos Rojos", p:3800},
+    {n:"Raíces Argentinas Malbec", p:9500},{n:"Reserva Andes Bonarda", p:3600},{n:"Reserva Andes Cabernet Sauvignon", p:3600},
+    {n:"Saint Felicien Cabernet Sauvignon", p:9900},{n:"Saint Felicien Malbec", p:9200},{n:"Santa Julia Chardonnay", p:6490},
+    {n:"Santa Julia Chenin Dulce", p:6790},{n:"Santa Julia Dulce Tinto", p:6190},{n:"Santa Julia Malbec", p:6190},
+    {n:"Sayanca Malbec", p:6800},{n:"Sinergia Malbec Roble", p:7500},{n:"Tercos", p:7300},
+    {n:"Trapiche Malbec", p:7190},{n:"Trivento Malbec Reserva", p:7700},{n:"Trumpeter Malbec", p:8290},
+    {n:"Tupac Reserva", p:9500},{n:"Vástago de Gea Malbec", p:9200},{n:"Vincent Blanco Dulce", p:8500},
+    {n:"Vincent Gran Corte", p:8900},{n:"Vincent Un Malbec", p:7800},{n:"Zorro Salvaje Cabernet Sauvignon", p:4000},
+  ]},
+  "Vodka": {items:[
+    {n:"Absolut Clásico", p:19500},{n:"Absolut Mandrin", p:21900},{n:"Absolut Mango", p:21900},
+    {n:"Absolut Peach", p:21900},{n:"Absolut Pears", p:21900},{n:"Absolut Raspberri", p:21900},
+    {n:"Absolut Vainilla", p:21900},{n:"Skyy Ananá", p:10299},{n:"Skyy Blood Orange", p:10299},
+    {n:"Skyy Clásico", p:8199},{n:"Skyy Cosmic", p:11399},{n:"Skyy Raspberry", p:10299},
+    {n:"Smirnoff Citric", p:9390},{n:"Smirnoff Clásico", p:8500},{n:"Smirnoff Green Apple", p:9390},
+    {n:"Smirnoff Raspberry", p:9390},{n:"Smirnoff Sandía", p:9390},{n:"Smirnoff Spicy", p:9390},{n:"Smirnoff Tropical", p:9390},
+  ]},
+  "Whisky": {items:[
+    {n:"Ballantine's", p:28500},{n:"J&B Yellow", p:25700},{n:"Jack Daniel's Clásico 700ml", p:42500},
+    {n:"Jack Daniel's Clásico 1L", p:49700},{n:"Jack Daniel's Honey 700ml", p:42500},{n:"Jack Daniel's Honey 1L", p:49700},
+    {n:"Jameson", p:29900},{n:"Jim Beam Bourbon", p:37900},{n:"JW Black Label 750ml", p:50400},
+    {n:"JW Black Label 1L", p:56000},{n:"JW Blue Label 750ml", p:374900},{n:"JW Double Black 1L", p:62700},
+    {n:"JW Green Label", p:97700},{n:"JW Red Label 750ml", p:28000},{n:"JW Red Label 1L", p:33000},
+    {n:"JW Gold Label Reserve", p:145000},{n:"White Horse", p:15700},
+  ]},
+  "Regalería / Accesorios": {items:[
+    {n:"Aireador Premium", p:11900},{n:"Copa Champagne", p:2999},{n:"Copa Vino Cristal 570ml", p:11500},
+    {n:"Copa Vino Cristal 650ml", p:12500},{n:"Copa Vino Vidrio", p:4300},{n:"Copón Gin", p:7200},
+    {n:"Destapador 2 Tiempos", p:3100},{n:"Destapador Hudson 2 Tiempos", p:6890},{n:"Kit Sacacorchos Manual Self-Pull", p:16800},
+    {n:"Kit Sacacorchos Aguja", p:14900},{n:"Pingüino de Cerámica", p:20000},{n:"Sacacorchos Eléctrico Blanco", p:25000},
+    {n:"Sacacorchos Eléctrico Negro Kit", p:30500},{n:"Sacacorchos Hudson Alas", p:15690},{n:"Tabla de Madera Chica", p:12000},
+    {n:"Tabla de Madera Grande", p:21000},{n:"Tapón al Vacío Bomba", p:4800},{n:"Tapón al Vacío Stopper", p:5700},
+    {n:"Vaso Whisky", p:7990},{n:"Vaso Whisky Premium", p:9990},
+  ]},
+};
+const fmt = n => "$" + n.toLocaleString("es-AR");
+const slug = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const cid = (cat,name) => slug(cat)+"--"+slug(name);
+
+// build price registry
+const PRICE = {};
+Object.keys(CATALOG).forEach(cat=>CATALOG[cat].items.forEach(it=>{ PRICE[cid(cat,it.n)] = {n:it.n, p:it.p}; }));
+
+// cart
+let cart = {};
+try{ cart = JSON.parse(localStorage.getItem("e68cart")||"{}"); }catch(e){ cart = {}; }
+const saveCart = ()=>{ try{ localStorage.setItem("e68cart", JSON.stringify(cart)); }catch(e){} };
+
+// logos
+document.getElementById("heroLogo").innerHTML = LOGO_SVG;
+document.getElementById("ageLogo").innerHTML = LOGO_SVG;
+document.getElementById("promoFree").textContent = fmt(SHOP.envioGratis);
+document.getElementById("promoMin").textContent = fmt(SHOP.minEnvio);
+
+
+function bottle(body,label,cap,txt,tc){tc=tc||"#1a1407";return `<svg viewBox="0 0 80 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><rect x="32" y="6" width="16" height="16" rx="2" fill="${cap}"/><rect x="34" y="20" width="12" height="22" fill="${body}"/><path d="M34 40 Q24 52 24 70 L24 178 Q24 188 34 188 L46 188 Q56 188 56 178 L56 70 Q56 52 46 40 Z" fill="${body}"/><rect x="28" y="60" width="5" height="118" rx="2.5" fill="rgba(255,255,255,.17)"/><rect x="26" y="96" width="28" height="58" rx="4" fill="${label}"/><text x="40" y="129" text-anchor="middle" font-family="'Bebas Neue',sans-serif" font-size="12" fill="${tc}" letter-spacing="1">${txt}</text></svg>`;}
+function can(body,txt){return `<svg viewBox="0 0 80 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><rect x="26" y="34" width="28" height="138" rx="12" fill="${body}"/><rect x="30" y="44" width="5" height="116" rx="2.5" fill="rgba(255,255,255,.2)"/><rect x="24" y="30" width="32" height="8" rx="3" fill="#c9ccd0"/><text x="40" y="106" text-anchor="middle" font-family="'Bebas Neue',sans-serif" font-size="12" fill="#0a0a0a" letter-spacing="1" transform="rotate(-90 40 104)">${txt}</text></svg>`;}
+function combo2(a,b){return `<div style="display:flex;align-items:flex-end;gap:3px">${a}${b}</div>`;}
+function artFor(name){
+  const n=name.toLowerCase();
+  if(n.indexOf("fernet")>=0 && (n.indexOf("+")>=0||n.indexOf("combo")>=0)) return combo2(bottle("#2a1a12","#d8c08a","#0e0e0e","FB"),can("#d23b3b","COLA"));
+  if(n.indexOf("absolut")>=0 && (n.indexOf("+")>=0)) return combo2(bottle("#cfe0ea","#d23b3b","#aab2b8","ABS","#fff"),can("#1eaf5a","SPEED"));
+  if(n.indexOf("+")>=0||n.indexOf("combo")>=0) return combo2(bottle("#cfe0ea","#d23b3b","#aab2b8","VOD","#fff"),can("#1eaf5a","SPEED"));
+  if(n.indexOf("fernet")>=0) return bottle("#2a1a12","#d8c08a","#0e0e0e","FB");
+  if(n.indexOf("gin")>=0||n.indexOf("heredero")>=0||n.indexOf("malaria")>=0||n.indexOf("beefeater")>=0) return bottle("#9fc6dd","#e8447a","#15212e","GIN","#fff");
+  if(n.indexOf("smirnoff")>=0||n.indexOf("vodka")>=0||n.indexOf("absolut")>=0||n.indexOf("skyy")>=0) return bottle("#cfe0ea","#d23b3b","#aab2b8","VODKA","#fff");
+  if(n.indexOf("jack")>=0||n.indexOf("whisky")>=0||n.indexOf("jameson")>=0||n.indexOf("ballantine")>=0||n.indexOf("jw ")>=0) return bottle("#2b1d12","#111","#caa24a","WHISKY","#e9c66a");
+  if(n.indexOf("aperol")>=0||n.indexOf("campari")>=0) return bottle("#e0571f","#f4f1ea","#7a2c10","APEROL");
+  if(n.indexOf("vino")>=0||n.indexOf("malbec")>=0||n.indexOf("cabernet")>=0||n.indexOf("chandon")>=0||n.indexOf("espumante")>=0) return bottle("#3a0f1a","#caa24a","#1a0a10","VINO","#fff");
+  return bottle("#23323f","#caa24a","#10171d","E68","#fff");
+}
+
+const main = document.getElementById("main");
+const catnav = document.getElementById("catnav");
+const cats = Object.keys(CATALOG);
+
+catnav.innerHTML = cats.map((c,i)=>`<button class="chip${i===0?' active':''}${CATALOG[c].fire?' fire':''}" data-cat="${slug(c)}">${c}</button>`).join("");
+
+main.innerHTML = cats.map(c=>{
+  const data = CATALOG[c];
+  const useCombo = !!data.combo;
+  const cards = data.items.map(it=>{
+    const id=cid(c,it.n);
+    const off = it.was ? `<span class="badge-off">-${Math.round((it.was-it.p)/it.was*100)}%</span>` : "";
+    const wasItem = it.was ? `<span class="was">${fmt(it.was)}</span>` : "";
+    const showArt = (data.fire||useCombo||it.combo);
+    const ik = it.img || slug(it.n);
+    const art = showArt ? `<div class="art"><span class="shine"></span><img class="pimg" src="img/${ik}.png" alt="${it.n}" loading="lazy" onerror="this.remove()">${artFor(it.n)}</div>` : "";
+    if(useCombo || it.combo){
+      return `<div class="combo prod" id="card-${id}" data-name="${it.n.toLowerCase()}">
+        ${off}${art}<div class="tag">Combo</div>
+        <div class="cname">${it.n}</div>
+        <div><span class="price">${fmt(it.p)}</span>${it.was?`<span class="was">${fmt(it.was)}</span>`:""}</div>
+        <div class="ctrl" data-id="${id}"></div>
+      </div>`;
+    }
+    return `<div class="item prod" id="card-${id}" data-name="${it.n.toLowerCase()}">
+      ${off}${art}<div class="top"><span class="name">${it.n}</span><span style="text-align:right">${wasItem}<span class="price">${fmt(it.p)}</span></span></div>
+      <div class="ctrl" data-id="${id}"></div>
+    </div>`;
+  }).join("");
+  const wrap = useCombo ? "combo-grid" : "grid";
+  return `<section class="section reveal" id="${slug(c)}">
+    <div class="section-head"><h2>${c}</h2><span class="count">${data.items.length}</span><span class="hr"></span></div>
+    <div class="${wrap}">${cards}</div>
+  </section>`;
+}).join("");
+
+function ctrlHTML(id){
+  const q = (cart[id] && cart[id].q) || 0;
+  if(q>0){
+    return `<div class="stepper"><button onclick="dec('${id}')">&minus;</button><span class="q">${q}</span><button onclick="inc('${id}')">+</button></div>`;
+  }
+  return `<button class="add" onclick="inc('${id}')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Agregar</button>`;
+}
+function paintCard(id){
+  const card=document.getElementById("card-"+id); if(!card) return;
+  card.querySelector(".ctrl").innerHTML=ctrlHTML(id);
+  card.classList.toggle("incart", ((cart[id]&&cart[id].q)||0)>0);
+}
+function paintAllCards(){ Object.keys(PRICE).forEach(paintCard); }
+
+function inc(id){ if(!cart[id]) cart[id]={n:PRICE[id].n,p:PRICE[id].p,q:0}; cart[id].q++; saveCart(); paintCard(id); afterCartChange(); toast(cart[id].q===1?"Agregado al carrito":"Cantidad actualizada"); bumpBadge(); }
+function dec(id){ if(!cart[id])return; cart[id].q--; if(cart[id].q<=0) delete cart[id]; saveCart(); paintCard(id); afterCartChange(); }
+function clearCart(){ Object.keys(cart).forEach(id=>delete cart[id]); saveCart(); paintAllCards(); afterCartChange(); }
+
+function subtotal(){ let s=0,n=0; for(const id in cart){ s+=cart[id].p*cart[id].q; n+=cart[id].q; } return {s:s,n:n}; }
+function afterCartChange(){ renderCart(); updateBadge(); if(document.getElementById("checkoutPane").style.display!=="none") updateCheckout(); }
+function updateBadge(){ const t=subtotal(); const b=document.getElementById("fabBadge"); b.textContent=t.n; b.classList.toggle("show",t.n>0); const bar=document.getElementById("cartBar"); if(bar){ bar.classList.toggle("show",t.n>0); document.getElementById("cbCount").textContent=t.n+(t.n===1?" producto":" productos"); document.getElementById("cbTotal").textContent=fmt(t.s); } }
+
+function renderCart(){
+  const box=document.getElementById("cartPane"); const ids=Object.keys(cart); const t=subtotal();
+  document.getElementById("cartTotal").textContent=fmt(t.s);
+  document.getElementById("goCheckout").disabled=ids.length===0;
+  document.getElementById("clearBtn").style.display=ids.length?"block":"none";
+  document.getElementById("shareBtn").style.display=ids.length?"block":"none";
+  if(!ids.length){ box.innerHTML=`<div class="cart-empty">Tu carrito está vacío.<br>Agregá productos del catálogo.</div>`; return; }
+  box.innerHTML=ids.map(id=>{ const it=cart[id]; return `<div class="crow">
+      <div class="ci"><div class="cn">${it.n}</div><div class="cp">${fmt(it.p)} c/u</div></div>
+      <div class="mini"><button onclick="dec('${id}')">&minus;</button><span class="q">${it.q}</span><button onclick="inc('${id}')">+</button></div>
+      <div class="ct">${fmt(it.p*it.q)}</div></div>`; }).join("");
+}
+
+function openCart(){ document.getElementById("drawer").classList.add("open"); document.getElementById("overlay").classList.add("open"); }
+function closeCart(){ document.getElementById("drawer").classList.remove("open"); document.getElementById("overlay").classList.remove("open"); }
+
+function showCheckout(){
+  if(!Object.keys(cart).length) return;
+  document.getElementById("cartPane").style.display="none";
+  document.getElementById("cartFoot").style.display="none";
+  document.getElementById("checkoutPane").style.display="block";
+  document.getElementById("checkoutFoot").style.display="block";
+  document.getElementById("drawerTitle").innerHTML="Finalizar pedido";
+  updateCheckout();
+}
+function showCart(){
+  document.getElementById("checkoutPane").style.display="none";
+  document.getElementById("checkoutFoot").style.display="none";
+  document.getElementById("cartPane").style.display="block";
+  document.getElementById("cartFoot").style.display="block";
+  document.getElementById("drawerTitle").innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0d68a" stroke-width="2"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2 3h3l2.4 12.4a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.2L22 6H6"/></svg> Mi pedido';
+}
+
+function tipoEntrega(){ const r=[].slice.call(document.querySelectorAll("#checkoutPane input[type=radio]")).find(x=>x.checked); return r?r.value:"envio"; }
+function updateCheckout(){
+  const t=subtotal(); const tipo=tipoEntrega();
+  document.getElementById("envioFields").style.display = tipo==="envio"?"block":"none";
+  const zsel=document.getElementById("ckZona"); const zona=SHOP.zonas[zsel.value||0];
+  let envio=0, envioLabel="";
+  if(tipo==="retiro"){ envio=0; envioLabel="Retiro en local"; }
+  else if(t.s>=SHOP.envioGratis){ envio=0; envioLabel="GRATIS"; }
+  else if(zona && zona.c===0){ envio=0; envioLabel="A confirmar"; }
+  else { envio=zona?zona.c:0; envioLabel=fmt(envio); }
+  document.getElementById("ckSub").textContent=fmt(t.s);
+  const eEl=document.getElementById("ckEnvio");
+  eEl.innerHTML = (envioLabel==="GRATIS") ? '<span class="free">GRATIS</span>' : envioLabel;
+  document.getElementById("ckTotal").textContent=fmt(t.s+envio);
+  const warn=document.getElementById("ckMinWarn"); const send=document.getElementById("ckSend");
+  if(tipo==="envio" && t.s<SHOP.minEnvio){ warn.style.display="block"; warn.textContent="El pedido mínimo para envío es "+fmt(SHOP.minEnvio)+". Te faltan "+fmt(SHOP.minEnvio-t.s)+" (o elegí retiro en local)."; send.disabled=true; }
+  else { warn.style.display="none"; send.disabled=false; }
+}
+
+function sendOrder(){
+  const ids=Object.keys(cart); if(!ids.length) return;
+  const name=document.getElementById("ckName").value.trim();
+  if(!name){ toast("Ingresá tu nombre"); document.getElementById("ckName").focus(); return; }
+  const tipo=tipoEntrega(); const t=subtotal();
+  const zona=SHOP.zonas[document.getElementById("ckZona").value||0];
+  const pago=document.getElementById("ckPago").value;
+  const note=document.getElementById("ckNote").value.trim();
+  let envio=0, envioTxt="";
+  if(tipo==="retiro"){ envioTxt="Retiro en local (68 e/ 17 y 18)"; }
+  else if(t.s>=SHOP.envioGratis){ envio=0; envioTxt="GRATIS"; }
+  else if(zona && zona.c===0){ envio=0; envioTxt="a confirmar"; }
+  else { envio=zona?zona.c:0; envioTxt=fmt(envio); }
+  let m="Hola Estación 68! Quiero hacer este pedido:\n\n";
+  ids.forEach(id=>{ const it=cart[id]; m+="• "+it.q+"x "+it.n+" — "+fmt(it.p*it.q)+"\n"; });
+  m+="\nSubtotal: "+fmt(t.s)+"\n";
+  if(tipo==="envio") m+="Envío: "+envioTxt+"\n";
+  m+="*TOTAL: "+fmt(t.s+envio)+"*\n\n";
+  m+="Cliente: "+name+"\n";
+  if(tipo==="envio"){ m+="Entrega: Envío a domicilio\nZona: "+(zona?zona.n:"")+"\nDirección: "+(document.getElementById("ckDir").value.trim()||"(a indicar)")+"\n"; }
+  else { m+="Entrega: Retiro en el local\n"; }
+  m+="Pago: "+pago+"\n";
+  if(note) m+="Nota: "+note+"\n";
+  window.open("https://wa.me/"+SHOP.wsp+"?text="+encodeURIComponent(m),"_blank");
+}
+
+function shareCart(){
+  const compact={}; Object.keys(cart).forEach(id=>compact[id]=cart[id].q);
+  const code=btoa(unescape(encodeURIComponent(JSON.stringify(compact))));
+  const url=location.origin+location.pathname+"#p="+code;
+  if(navigator.clipboard){ navigator.clipboard.writeText(url).then(()=>toast("Link del pedido copiado")); }
+  else { toast("Copiá el link: "+url); }
+}
+function readShared(){
+  const h=location.hash; if(h.indexOf("#p=")!==0) return;
+  try{ const obj=JSON.parse(decodeURIComponent(escape(atob(h.slice(3)))));
+    Object.keys(obj).forEach(id=>{ if(PRICE[id]) cart[id]={n:PRICE[id].n,p:PRICE[id].p,q:obj[id]}; });
+    saveCart(); toast("Pedido compartido cargado");
+  }catch(e){}
+}
+
+function toast(t){ const el=document.getElementById("toast"); el.textContent=t; el.classList.add("show"); clearTimeout(window._tt); window._tt=setTimeout(()=>el.classList.remove("show"),1700); }
+
+// AGE GATE
+function ageYes(){ try{localStorage.setItem("e68_age","1");}catch(e){} document.getElementById("ageGate").classList.add("hide"); }
+function ageNo(){ document.getElementById("ageDeny").style.display="block"; }
+(function(){ let ok=false; try{ok=localStorage.getItem("e68_age")==="1";}catch(e){} if(ok) document.getElementById("ageGate").classList.add("hide"); })();
+
+// HOURS + STATUS
+function hh(h){ return String(((h%24)+24)%24).padStart(2,"0")+":00"; }
+(function renderHours(){
+  const today=new Date().getDay();
+  document.getElementById("hoursList").innerHTML = SHOP.hor.map((r,i)=>{
+    const txt = r ? (hh(r[0])+" – "+hh(r[1])) : "Cerrado";
+    return `<div class="foot-li${i===today?' today':''}"><b style="min-width:88px;display:inline-block">${SHOP.diaNom[i]}</b> ${txt}</div>`;
+  }).join("");
+  document.getElementById("paysList").innerHTML = SHOP.pagos.map(p=>`<span class="pay">${p}</span>`).join("");
+})();
+function computeStatus(){
+  const now=new Date(); const d=now.getDay(); const mins=now.getHours()*60+now.getMinutes();
+  let open=false;
+  const r=SHOP.hor[d]; if(r && mins>=r[0]*60 && mins<r[1]*60) open=true;
+  const prev=(d+6)%7; const pr=SHOP.hor[prev]; if(pr && pr[1]>24 && mins<(pr[1]-24)*60) open=true;
+  const b=document.getElementById("statusBadge"); const tx=document.getElementById("statusText");
+  b.className="status-badge "+(open?"st-open":"st-closed");
+  tx.textContent=open?"Abierto ahora":"Cerrado";
+}
+computeStatus(); setInterval(computeStatus,60000);
+
+// NAV + SEARCH
+catnav.addEventListener("click", e=>{ const chip=e.target.closest(".chip"); if(!chip) return; document.getElementById(chip.dataset.cat).scrollIntoView({behavior:"smooth",block:"start"}); });
+const chips=[].slice.call(document.querySelectorAll(".chip"));
+const spy=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){const id=en.target.id;chips.forEach(ch=>ch.classList.toggle("active",ch.dataset.cat===id));const ac=catnav.querySelector(".chip.active");if(ac){catnav.scrollLeft=ac.offsetLeft-catnav.clientWidth/2+ac.clientWidth/2;}}});},{rootMargin:"-45% 0px -50% 0px"});
+cats.forEach(c=>spy.observe(document.getElementById(slug(c))));
+const search=document.getElementById("search"), empty=document.getElementById("empty");
+search.addEventListener("input",()=>{
+  const q=search.value.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").trim(); let any=false;
+  document.querySelectorAll(".section").forEach(sec=>{ let vis=0;
+    sec.querySelectorAll(".prod").forEach(p=>{ const name=p.dataset.name.normalize("NFD").replace(/[̀-ͯ]/g,""); const show=!q||name.includes(q); p.style.display=show?"":"none"; if(show)vis++; });
+    sec.style.display=vis?"":"none"; if(vis)any=true; });
+  empty.style.display=(q&&!any)?"block":"none";
+});
+
+// populate checkout selects
+document.getElementById("ckZona").innerHTML = SHOP.zonas.map((z,i)=>`<option value="${i}">${z.n}${z.c?" (+"+fmt(z.c)+")":""}</option>`).join("");
+document.getElementById("ckPago").innerHTML = SHOP.pagos.map(p=>`<option>${p}</option>`).join("");
+
+window.inc=inc;window.dec=dec;window.clearCart=clearCart;window.openCart=openCart;window.closeCart=closeCart;
+window.showCheckout=showCheckout;window.showCart=showCart;window.updateCheckout=updateCheckout;window.sendOrder=sendOrder;
+window.shareCart=shareCart;window.ageYes=ageYes;window.ageNo=ageNo;
+
+const rev=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");rev.unobserve(e.target);}});},{rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll(".section.reveal").forEach(s=>rev.observe(s));
+function bumpBadge(){const b=document.getElementById("fabBadge");b.classList.remove("bump");void b.offsetWidth;b.classList.add("bump");}
+window.bumpBadge=bumpBadge;
+
+readShared();
+paintAllCards(); renderCart(); updateBadge();
+</script>
+</body>
+</html>
