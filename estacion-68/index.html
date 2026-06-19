@@ -217,6 +217,8 @@
   .cartbar .cb-t{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:.5px}
   @media(max-width:600px){.cartbar.show{display:flex}.fab{display:none}}
 
+  .art .pimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:6px 2px 2px;z-index:2}
+  .art .shine{z-index:3}
 </style>
 </head>
 <body>
@@ -416,12 +418,12 @@ const LOGO_SVG = `<svg viewBox="0 0 300 300" role="img" aria-label="Estación 68
 
 const CATALOG = {
   "Ofertas": {fire:true, items:[
-    {n:"Fernet Branca 1L", p:18900, was:21000},
-    {n:"Gin Heredero Pomelo Rosa", p:11900, was:14500},
-    {n:"Smirnoff Clásico", p:6990, was:8500},
-    {n:"Jack Daniel's Clásico 700ml", p:38900, was:42500},
-    {n:"Aperol", p:8500, was:9800},
-    {n:"Combo Previa: Fernet 750ml + 2 Coca 1,5L", p:18500, was:20500, combo:true},
+    {n:"Fernet Branca 1L", p:18900, was:21000, img:"fernet-branca-1l"},
+    {n:"Gin Heredero Pomelo Rosa", p:11900, was:14500, img:"gin-heredero-pomelo-rosa"},
+    {n:"Smirnoff Clásico", p:6990, was:8500, img:"smirnoff-clasico"},
+    {n:"Jack Daniel's Clásico 700ml", p:38900, was:42500, img:"jack-daniels-700"},
+    {n:"Aperol", p:8500, was:9800, img:"aperol"},
+    {n:"Combo Previa: Fernet 750ml + 2 Coca 1,5L", p:18500, was:20500, combo:true, img:"combo-previa"},
   ]},
   "Combos": {combo:true, items:[
     {n:"Smirnoff + 2 Speed", p:10900},{n:"Heredero Pink + Tónica 2,25L", p:16900},
@@ -614,7 +616,8 @@ main.innerHTML = cats.map(c=>{
     const off = it.was ? `<span class="badge-off">-${Math.round((it.was-it.p)/it.was*100)}%</span>` : "";
     const wasItem = it.was ? `<span class="was">${fmt(it.was)}</span>` : "";
     const showArt = (data.fire||useCombo||it.combo);
-    const art = showArt ? `<div class="art"><span class="shine"></span>${artFor(it.n)}</div>` : "";
+    const ik = it.img || slug(it.n);
+    const art = showArt ? `<div class="art"><span class="shine"></span><img class="pimg" src="img/${ik}.png" alt="${it.n}" loading="lazy" onerror="this.remove()">${artFor(it.n)}</div>` : "";
     if(useCombo || it.combo){
       return `<div class="combo prod" id="card-${id}" data-name="${it.n.toLowerCase()}">
         ${off}${art}<div class="tag">Combo</div>
@@ -781,7 +784,7 @@ computeStatus(); setInterval(computeStatus,60000);
 // NAV + SEARCH
 catnav.addEventListener("click", e=>{ const chip=e.target.closest(".chip"); if(!chip) return; document.getElementById(chip.dataset.cat).scrollIntoView({behavior:"smooth",block:"start"}); });
 const chips=[].slice.call(document.querySelectorAll(".chip"));
-const spy=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){const id=en.target.id;chips.forEach(ch=>ch.classList.toggle("active",ch.dataset.cat===id));const ac=catnav.querySelector(".chip.active");if(ac)ac.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"});}});},{rootMargin:"-45% 0px -50% 0px"});
+const spy=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){const id=en.target.id;chips.forEach(ch=>ch.classList.toggle("active",ch.dataset.cat===id));const ac=catnav.querySelector(".chip.active");if(ac){catnav.scrollLeft=ac.offsetLeft-catnav.clientWidth/2+ac.clientWidth/2;}}});},{rootMargin:"-45% 0px -50% 0px"});
 cats.forEach(c=>spy.observe(document.getElementById(slug(c))));
 const search=document.getElementById("search"), empty=document.getElementById("empty");
 search.addEventListener("input",()=>{
